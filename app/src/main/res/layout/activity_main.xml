@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <RelativeLayout>
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
 
         <FrameLayout
             android:id="@+id/splash_and_header"
@@ -28,6 +30,5 @@
         </FrameLayout>
 
     </RelativeLayout>
-    View
 
 </android.support.constraint.ConstraintLayout>
