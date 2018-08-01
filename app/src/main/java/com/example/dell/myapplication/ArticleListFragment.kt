@@ -10,8 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.example.dell.myapplication.dummy.DummyContent
-import com.example.dell.myapplication.dummy.DummyContent.DummyItem
+import com.example.dell.myapplication.story.StoryContent
+import com.example.dell.myapplication.story.StoryContent.StoryItem
 
 /**
  * A fragment representing a list of Items.
@@ -44,7 +44,7 @@ class ArticleListFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyArticleListRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                adapter = MyArticleListRecyclerViewAdapter(StoryContent.ITEMS, listener)
             }
         }
         return view
@@ -77,7 +77,7 @@ class ArticleListFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
+        fun onListFragmentInteraction(item: StoryItem?)
     }
 
     companion object {

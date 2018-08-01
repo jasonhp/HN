@@ -1,10 +1,7 @@
-package com.example.dell.myapplication.dummy
+package com.example.dell.myapplication.story
 
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
-import java.util.logging.SimpleFormatter
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -12,35 +9,35 @@ import java.util.logging.SimpleFormatter
  *
  * TODO: Replace all uses of this class before publishing your app.
  */
-object DummyContent {
+object StoryContent {
 
     /**
      * An array of sample (dummy) items.
      */
-    val ITEMS: MutableList<DummyItem> = ArrayList()
+    val ITEMS: MutableList<StoryItem> = ArrayList()
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    val ITEM_MAP: MutableMap<String, DummyItem> = HashMap()
+    val ITEM_MAP: MutableMap<String, StoryItem> = HashMap()
 
     private const val COUNT = 25
 
     init {
         // Add some sample items.
         for (i in 1..COUNT) {
-            addItem(createDummyItem(i))
+            addItem(createStoryItem(i))
         }
     }
 
-    private fun addItem(item: DummyItem) {
+    private fun addItem(item: StoryItem) {
         ITEMS.add(item)
         ITEM_MAP[item.id] = item
     }
 
-    private fun createDummyItem(position: Int): DummyItem {
+    private fun createStoryItem(position: Int): StoryItem {
         val curTime = Date().toString()
-        return DummyItem(
+        return StoryItem(
                 curTime.reversed(),
                 makeTitle(position),
                 makeDes(position, curTime.reversed()),
@@ -66,7 +63,7 @@ object DummyContent {
     /**
      * A dummy item representing a piece of content.
      */
-    data class DummyItem(val id: String, val title: String, val desc: String, val author: String, val content: String, val pubTime: String) {
+    data class StoryItem(val id: String, val title: String, val desc: String, val author: String, val content: String, val pubTime: String) {
         var isFaved: Boolean = false
         val pubDate: String
 
