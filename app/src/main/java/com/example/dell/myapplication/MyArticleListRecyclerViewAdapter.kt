@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 
 
@@ -41,8 +42,8 @@ class MyArticleListRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+        holder.titleView?.text = item.title
+        holder.authorView?.text = item.author
 
         with(holder.mView) {
             tag = item
@@ -53,11 +54,14 @@ class MyArticleListRecyclerViewAdapter(
     override fun getItemCount(): Int = mValues.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
+        var titleView: TextView? = null
+        var authorView: TextView? = null
+        var commentCountView: TextView? = null
+        var commentIconView: ImageView? = null
+        var scoreView: TextView? = null
 
-        override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
+        init {
+
         }
     }
 }

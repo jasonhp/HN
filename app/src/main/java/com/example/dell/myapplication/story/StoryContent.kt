@@ -1,5 +1,6 @@
 package com.example.dell.myapplication.story
 
+import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,16 +36,9 @@ object StoryContent {
         ITEM_MAP[item.id] = item
     }
 
-    private fun createStoryItem(position: Int): StoryItem {
+    private fun createStoryItem(data: ): StoryItem {
         val curTime = Date().toString()
-        return StoryItem(
-                curTime.reversed(),
-                makeTitle(position),
-                makeDes(position, curTime.reversed()),
-                "Jason Zhang",
-                makeDetails(position),
-                curTime
-        )
+        return StoryItem()
     }
 
     private fun makeTitle(position: Int): String = "title for $position"
@@ -63,8 +57,7 @@ object StoryContent {
     /**
      * A dummy item representing a piece of content.
      */
-    data class StoryItem(val id: String, val title: String, val desc: String, val author: String, val content: String, val pubTime: String) {
-        var isFaved: Boolean = false
+    data class StoryItem(val id: Number, val title: String, val commentCount: Number, val author: String, val score: Number, val pubTime: Long, val url: String) {
         val pubDate: String
 
         init {
