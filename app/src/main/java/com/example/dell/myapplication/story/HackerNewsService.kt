@@ -1,6 +1,5 @@
 package com.example.dell.myapplication.story
 
-import com.example.dell.myapplication.story.StoryContent
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,14 +11,14 @@ interface HackerNewsService {
     }
 
     @GET("topstories.json?print=pretty")
-    fun topList(): Observable<Array<String>>
+    fun topList(): Observable<Array<Number>>
 
     @GET("newstories.json?print=pretty")
-    fun newList(): Observable<Array<String>>
+    fun newList(): Observable<Array<Number>>
 
     @GET("beststories.json?print=pretty")
-    fun bestList(): Observable<Array<String>>
+    fun bestList(): Observable<Array<Number>>
 
     @GET("item/{id}.json?print=pretty")
-    fun getStory(@Path ("storyId") storyId: String): Observable<StoryContent.StoryItem>
+    fun getStory(@Path ("storyId") storyId: Number): Observable<StoryResult.StoryItem>
 }

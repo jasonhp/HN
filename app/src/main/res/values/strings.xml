@@ -3,5 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="story_type_top">STORY_TYPE_TOP</string>
+    <string name="story_type_new">STORY_TYPE_NEW</string>
+    <string name="story_type_best">STORY_TYPE_BEST</string>
 
 </resources>

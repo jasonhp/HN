@@ -9,7 +9,7 @@ import android.widget.TextView
 
 
 import com.example.dell.myapplication.ArticleListFragment.OnListFragmentInteractionListener
-import com.example.dell.myapplication.story.StoryContent.StoryItem
+import com.example.dell.myapplication.story.StoryResult
 
 import kotlinx.android.synthetic.main.fragment_articlelist_item.view.*
 
@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_articlelist_item.view.*
  * TODO: Replace the implementation with code for your data type.
  */
 class MyArticleListRecyclerViewAdapter(
-        private val mValues: List<StoryItem>,
+        private val mValues: MutableList<StoryResult.StoryItem>,
         private val mListener: OnListFragmentInteractionListener?)
     : RecyclerView.Adapter<MyArticleListRecyclerViewAdapter.ViewHolder>() {
 
@@ -27,7 +27,7 @@ class MyArticleListRecyclerViewAdapter(
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as StoryItem
+            val item = v.tag as StoryResult.StoryItem
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
             mListener?.onListFragmentInteraction(item)

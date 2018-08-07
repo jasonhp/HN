@@ -10,8 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.example.dell.myapplication.story.StoryContent
-import com.example.dell.myapplication.story.StoryContent.StoryItem
+import com.example.dell.myapplication.story.StoryResult
 
 /**
  * A fragment representing a list of Items.
@@ -21,6 +20,8 @@ import com.example.dell.myapplication.story.StoryContent.StoryItem
 class ArticleListFragment : Fragment() {
 
     // TODO: Customize parameters
+    private var storyResult: StoryResult? = null
+
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
@@ -44,7 +45,7 @@ class ArticleListFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyArticleListRecyclerViewAdapter(StoryContent.ITEMS, listener)
+                adapter = MyArticleListRecyclerViewAdapter(storyResult?.storyArr!!, listener)
             }
         }
         return view
@@ -52,6 +53,7 @@ class ArticleListFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        storyResult = StoryResult()
         if (context is OnListFragmentInteractionListener) {
             listener = context
         } else {
@@ -77,7 +79,7 @@ class ArticleListFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: StoryItem?)
+        fun onListFragmentInteraction(item: StoryResult.StoryItem?)
     }
 
     companion object {

@@ -3,7 +3,7 @@ package com.example.dell.myapplication
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.example.dell.myapplication.story.StoryContent
+import com.example.dell.myapplication.story.StoryResult
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), ArticleListFragment.OnListFragmentInte
         }
     }
 
-    override fun onListFragmentInteraction(item: StoryContent.StoryItem?) {
+    override fun onListFragmentInteraction(item: StoryResult.StoryItem?) {
         val readerFragment = ArticleReaderFragment()
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, readerFragment)
