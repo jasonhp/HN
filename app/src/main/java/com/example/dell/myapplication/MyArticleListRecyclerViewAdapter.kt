@@ -9,9 +9,7 @@ import android.widget.TextView
 
 
 import com.example.dell.myapplication.ArticleListFragment.OnListFragmentInteractionListener
-import com.example.dell.myapplication.story.StoryResult
-
-import kotlinx.android.synthetic.main.fragment_articlelist_item.view.*
+import com.example.dell.myapplication.bean.StoryBean
 
 /**
  * [RecyclerView.Adapter] that can display a [StoryItem] and makes a call to the
@@ -19,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_articlelist_item.view.*
  * TODO: Replace the implementation with code for your data type.
  */
 class MyArticleListRecyclerViewAdapter(
-        private val mValues: MutableList<StoryResult.StoryItem>,
+        private val mValues: MutableList<StoryBean>,
         private val mListener: OnListFragmentInteractionListener?)
     : RecyclerView.Adapter<MyArticleListRecyclerViewAdapter.ViewHolder>() {
 
@@ -27,7 +25,7 @@ class MyArticleListRecyclerViewAdapter(
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as StoryResult.StoryItem
+            val item = v.tag as StoryBean
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
             mListener?.onListFragmentInteraction(item)
@@ -43,7 +41,7 @@ class MyArticleListRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
         holder.titleView?.text = item.title
-        holder.authorView?.text = item.author
+        holder.authorView?.text = item.getAuthor()
 
         with(holder.mView) {
             tag = item

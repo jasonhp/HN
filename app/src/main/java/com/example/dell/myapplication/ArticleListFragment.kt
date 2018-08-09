@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.dell.myapplication.bean.StoryBean
+import com.example.dell.myapplication.story.StoryLoader
 
 import com.example.dell.myapplication.story.StoryResult
 
@@ -25,6 +27,8 @@ class ArticleListFragment : Fragment() {
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
+
+    private var curStoryType: String = constants.STORY_TYPE_NEW
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +49,8 @@ class ArticleListFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyArticleListRecyclerViewAdapter(storyResult?.storyArr!!, listener)
+                adapter = MyArticleListRecyclerViewAdapter(storyResult?.curStoryArr!!, listener)
+
             }
         }
         return view
@@ -59,6 +64,16 @@ class ArticleListFragment : Fragment() {
         } else {
             throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
         }
+    }
+
+    fun loadStory() {
+        var loadedStoryList: MutableList<>
+        StoryLoader.loadNewStories(curStoryType,
+                { result ->
+                    println("rx: next! --Jason")
+                    println(result)
+                }
+        )
     }
 
     override fun onDetach() {
@@ -79,7 +94,7 @@ class ArticleListFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: StoryResult.StoryItem?)
+        fun onListFragmentInteraction(item: StoryBean?)
     }
 
     companion object {
